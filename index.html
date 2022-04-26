@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-tooltip@3.0.2/dist/css/bulma-tooltip.min.css" />
 
 	<script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.33"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
 
@@ -20,7 +20,12 @@
                 Weather
             </h1>
            <h1 class="title is-1">{{ temperature }}</h1>
+	   <h2 class="subtitle" v-if="code == 0">Clear sky</h2>
+	   <h2 class="subtitle" v-if="code == 1">Mainly clear</h2>
+	   <h2 class="subtitle" v-if="code == 2">Partly cloudy</h2>
+           <h2 class="subtitle" v-if="code == 3">Overcast</h2>
 	   <h2 class="subtitle">{{ time }}</h2>
+   	   
         </div>
     </section>
     <script>
@@ -28,7 +33,8 @@
             el: '#app',
             data: {
                 temperature: null,
-		time: null
+		time: null,
+		code: null
             },
             mounted: function () {
                 this.getTemperature();
@@ -42,6 +48,7 @@
                                 // handle success
                                 this.temperature = response.data.current_weather.temperature + '°C';
 				this.time = response.data.current_weather.time;
+				this.code = response.data.current_weather.weathercode;
                             });
                     });
                 },
