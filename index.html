@@ -15,17 +15,15 @@
 
 <body>
     <section class="section">
-        <div id="app" class="container">
+        <div id="app" class="container has-text-centered">
             <h1 class="title">
                 Weather
             </h1>
-           <h1 class="title has-text-centered is-1">{{ temperature }}</h1>
-	   <h2 class="subtitle has-text-centered" v-if="code == 0"><figure class="image is-128x128"><img src="http://openweathermap.org/img/wn/01d@2x.png"></figure> Clear sky</h2>
-	   <h2 class="subtitle has-text-centered" v-if="code == 1"><a class="fas fa-cloud-sun"></a> Mainly clear</h2>
-	   <h2 class="subtitle has-text-centered" v-if="code == 2"><a class="fas fa-cloud-sun"></a> Partly cloudy</h2>
-           <h2 class="subtitle has-text-centered" v-if="code == 3"><figure class="image is-128x128"><img src="http://openweathermap.org/img/wn/02d@2x.png"></figure> Overcast</h2>
-	   <h2 class="subtitle has-text-centered" v-if="code == 45">Fog</h2>
-	   <h2 class="subtitle has-text-centered" v-if="code == 48"><a class="fas fa-cloud"></a> Fog</h2>
+           <h1 class="title  is-1">{{ temperature }}</h1>
+
+		<figure class="image is-128x128 is-inline-block"><img src="{{ code }}"></figure>
+                <h2 class="subtitle">{{ description }}</h2>
+
 	   <h2 class="subtitle has-text-centered">{{ time }}</h2>
    	   
 	   <footer class="footer">
@@ -44,7 +42,9 @@
 		return {
                 	temperature: null,
 			time: null,
-			code: null
+			code: null,
+			description: null,
+			icon: null,
 		}
             },
             mounted() {
@@ -60,6 +60,15 @@
                                 this.temperature = response.data.current_weather.temperature + '°C';
 				this.time = response.data.current_weather.time;
 				this.code = response.data.current_weather.weathercode;
+				
+				switch(this.code) {
+					case 3:
+						this.icon = "http://openweathermap.org/img/wn/02d@2x.png";
+						this.description = "Overcast";
+						break;
+					default:
+						break;
+				}
                             });
                     });
                 },
