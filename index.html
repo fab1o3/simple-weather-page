@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-tooltip@3.0.2/dist/css/bulma-tooltip.min.css" />
 
-	<script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.33"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
@@ -23,7 +23,7 @@
 	   <h2 class="subtitle" v-if="code == 0"><a class="fa-solid fa-sun-bright">Clear sky</a></h2>
 	   <h2 class="subtitle" v-if="code == 1">Mainly clear</h2>
 	   <h2 class="subtitle" v-if="code == 2">Partly cloudy</h2>
-           <h2 class="subtitle" v-if="code == 3"><i class="fa-solid fa-clouds">Overcast</i></h2>
+           <h2 class="subtitle" v-if="code == 3"><i class="fas fa-cloud">Overcast</i></h2>
 	   <h2 class="subtitle">{{ time }}</h2>
    	   
         </div>
