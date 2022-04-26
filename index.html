@@ -20,16 +20,19 @@
                 Weather
             </h1>
            <h1 class="title is-1">{{ temperature }}</h1>
+	   <h2 class="subtitle">{{ time }}</h2>
         </div>
     </section>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                temperature: null
+                temperature: null,
+		time: null
             },
             mounted: function () {
                 this.getTemperature();
+		setInterval(this.getTemperature(), 1800 * 1000);
             },
             methods: {
                 getTemperature: function () {
@@ -38,6 +41,7 @@
                             .then((response) => {
                                 // handle success
                                 this.temperature = response.data.current_weather.temperature + '°C';
+				this.time = response.data.current_weather.time;
                             });
                     });
                 },
