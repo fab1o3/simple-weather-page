@@ -20,7 +20,7 @@
                 Weather
             </h1>
            <h1 class="title is-1">{{ temperature }}</h1>
-	   <h2 class="subtitle" v-if="code == 0">Clear sky</h2>
+	   <h2 class="subtitle" v-if="code == 0"><a class="fa-solid fa-sun-bright">Clear sky</a></h2>
 	   <h2 class="subtitle" v-if="code == 1">Mainly clear</h2>
 	   <h2 class="subtitle" v-if="code == 2">Partly cloudy</h2>
            <h2 class="subtitle" v-if="code == 3">Overcast</h2>
